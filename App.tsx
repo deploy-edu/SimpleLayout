@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StyleSheet } from "react-native";
+import Bottom from "./src/components/Bottom";
+import Content from "./src/components/Content";
+import Header from "./src/components/Header";
+import ListItem from "./src/components/ListItem";
+
+const users = [
+  {
+    name: "John doe",
+  },
+  {
+    name: "Jane doe",
+  },
+  {
+    name: "John smith",
+  },
+];
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-    </View>
+      <Header />
+      <Content>
+        {users.map((user, index) => (
+          <ListItem name={user.name} key={index} />
+        ))}
+      </Content>
+      <Bottom />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
   },
 });
